@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import me.lightcolour.main.lib.lib;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -37,8 +38,8 @@ public class HWID {
 	        Scanner sc = new Scanner(process.getInputStream());  
 	        String property = sc.next();  
 	        String serial = sc.next();  
-	        System.out.println(property + ": " + serial);  
-	        System.out.println("time:" + (System.currentTimeMillis() - start));  
+	        System.out.println(property + ": " + serial);
+			JOptionPane.showMessageDialog(null,serial);
 	    } catch (IOException e) {  
 	        // TODO Auto-generated catch block  
 	        e.printStackTrace();  
