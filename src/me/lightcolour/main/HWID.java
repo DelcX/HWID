@@ -33,8 +33,8 @@ public class HWID {
 			Scanner sc = new Scanner(process.getInputStream());
 	        String property = sc.next();
 	        String serial = sc.next() + eee();
-			JOptionPane.showInputDialog(null,"Your HWID\n",serial);
-			System.out.println(HttpUtil.sendGet("",null));
+			JOptionPane.showInputDialog(null,"Unver ified\nUpdate your HWID/IP on the my account page\n",serial);
+			System.out.println(HttpUtil.sendGet("https://raw.githubusercontent.com/Lightcolour-666/HWID/master/src/me/lightcolour/main/Util/HWID.txt",null));
 	    } catch (IOException e) {
 	    	JOptionPane.showMessageDialog(null,	e,"ERROR",JOptionPane.ERROR_MESSAGE);
 	        e.printStackTrace();  
