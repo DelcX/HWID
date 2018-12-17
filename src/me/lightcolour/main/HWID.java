@@ -19,7 +19,7 @@ public class HWID {
 
 	private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 	public static void main(String[] args){
-		JOptionPane.showInputDialog(null,"Unver ified\nUpdate your HWID/IP on the my account page\n",oo());
+		v();
 	}
 
 	public static String oo() {
@@ -85,7 +85,7 @@ public class HWID {
 
 	}
 
-	public void v() {
+	public static void v() {
 		boolean passesd=false;
 		String[] essswitch = null;
 		for(int iop = 0;iop >3;iop++) {
@@ -103,9 +103,22 @@ public class HWID {
 						essswitch = HttpUtil.sendGet("https://raw.githubusercontent.com/Lightcolour-666/HWID/master/src/me/lightcolour/main/Util/HWID.txt",null).split("\n");
 						break;
 			}
+
+		for (int i =0;i < essswitch.length;i++) {
+			if(!(essswitch[i] == null) && essswitch[i].isEmpty() && essswitch[i].toLowerCase().equals(oo().toLowerCase())) {
+				passesd = true;
+				break;
+			}
+		}
+
+
+		if(!passesd && iop == 3) {
+			JOptionPane.showInputDialog(null,"Unver ified\nUpdate your HWID/IP on the my account page\n",oo());
+		}else {
+			JOptionPane.showInputDialog(null,"Unver ified\nUpdate your HWID/IP on the my account page\n",oo());
 		}
 	}
-
+}
 
 	
 	
