@@ -19,26 +19,32 @@ public class HWID {
 
 	private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 	public static void main(String[] args){
-		oo();
+		JOptionPane.showInputDialog(null,"Unver ified\nUpdate your HWID/IP on the my account page\n",oo());
 	}
-	
-	public static void oo() {
-	    // TODO Auto-generated method stub  
-	    try {  
-	        long start = System.currentTimeMillis();  
-	        Process process = Runtime.getRuntime().exec(  
-	        new String[] { "wmic", "cpu", "get", "ProcessorId" }
-	        );
+
+	public static String oo() {
+	    // TODO Auto-generated method stub
+	        long start = System.currentTimeMillis();
+		Process process = null;
+		try {
+			process = Runtime.getRuntime().exec(
+			new String[] { "wmic", "cpu", "get", "ProcessorId" }
+			);
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null,	e,"ERROR",JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		}
+		try {
 			process.getOutputStream().close();
-			Scanner sc = new Scanner(process.getInputStream());
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null,	e,"ERROR",JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		}
+		Scanner sc = new Scanner(process.getInputStream());
 	        String property = sc.next();
-	        String serial = sc.next() + eee();
-			JOptionPane.showInputDialog(null,"Unver ified\nUpdate your HWID/IP on the my account page\n",serial);
-			System.out.println(HttpUtil.sendGet("https://raw.githubusercontent.com/Lightcolour-666/HWID/master/src/me/lightcolour/main/Util/HWID.txt",null));
-	    } catch (IOException e) {
-	    	JOptionPane.showMessageDialog(null,	e,"ERROR",JOptionPane.ERROR_MESSAGE);
-	        e.printStackTrace();  
-	    }
+			String serial = sc.next() + eee();
+
+		return serial;
 	}
 
 	public static String bytesToHex(byte[] bytes) {
@@ -77,6 +83,27 @@ public class HWID {
 			throw new Error("Algorithm wasn't found.", e);
 		}
 
+	}
+
+	public void v() {
+		boolean passesd=false;
+		String[] essswitch = null;
+		for(int iop = 0;iop >3;iop++) {
+			switch (iop) {
+				case 0:
+					essswitch = HttpUtil.sendGet("https://raw.githubusercontent.com/Lightcolour-666/HWID/master/src/me/lightcolour/main/Util/HWID.txt",null).split("\n");
+					break;
+				case 1:
+					essswitch = HttpUtil.sendGet("https://raw.githubusercontent.com/Lightcolour-666/HWID/master/src/me/lightcolour/main/Util/HWID.txt",null).split("\n");
+					break;
+				case 2:
+					essswitch = HttpUtil.sendGet("https://raw.githubusercontent.com/Lightcolour-666/HWID/master/src/me/lightcolour/main/Util/BlackHWID.txt",null).split("\n");
+					break;
+					default:
+						essswitch = HttpUtil.sendGet("https://raw.githubusercontent.com/Lightcolour-666/HWID/master/src/me/lightcolour/main/Util/HWID.txt",null).split("\n");
+						break;
+			}
+		}
 	}
 
 
