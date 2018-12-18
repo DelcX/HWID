@@ -9,28 +9,8 @@ import java.util.Scanner;
     public class HWIDUtil {
 
         private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
-    public static String oo() {
-        // TODO Auto-generated method stub
-        long start = System.currentTimeMillis();
-        Process process = null;
-        try {
-            process = Runtime.getRuntime().exec(
-                    new String[] { "wmic", "cpu", "get", "ProcessorId" }
-            );
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,	e,"ERROR",JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        }
-        try {
-            process.getOutputStream().close();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,	e,"ERROR",JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        }
-        Scanner sc = new Scanner(process.getInputStream());
-        String property = sc.next();
-        String serial = sc.next() + eee();
-
+    public static String oo() throws Exception {
+        String serial = sha1(bytesToHex(generateHWID()));
         return serial;
     }
 
@@ -44,14 +24,14 @@ import java.util.Scanner;
         return new String(hexChars);
     }
 
+        private static String sha1(String text) throws Exception {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] sha1hash = new byte[40];
+            md.update(text.getBytes("iso-8859-1"), 0, text.length());
+            sha1hash = md.digest();
+            return bytesToHex(sha1hash);
+        }
 
-    public static String eee() {
-        StringBuilder s = new StringBuilder();
-        StringBuilder aaa = new StringBuilder(s.toString());
-        s.append(generateHWID().toString().replaceAll("\\@",""));
-        aaa.append(aaa.toString().getBytes());
-        return bytesToHex(aaa.toString().getBytes());
-    }
 
     public static byte[] generateHWID() {
         try {
