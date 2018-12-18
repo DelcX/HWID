@@ -20,10 +20,15 @@ public class HWID {
 
 
 	public static void main(String[] args){
-		v();
+		if (HWID()) {
+			//succeed
+			JOptionPane.showMessageDialog(null,"233333");
+		}else {
+			JOptionPane.showMessageDialog(null,"ERROR \n 验证错误!","ERROR",JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
-	public static void v() {
+	public static boolean HWID() {
 		boolean passesd = false;
 		try {
 			for (int iop = 0; iop < 7; iop++) {
@@ -56,13 +61,13 @@ public class HWID {
 				}
 				for (int i = 0; i < essswitch.length; i++) {
 						System.out.println(essswitch[i]);
-					if(essswitch[i].equals(HWIDUtil.oo())) {
+					if(essswitch[i] != null && (! essswitch[i].isEmpty()) && essswitch[i].equals(HWIDUtil.oo())) {
 						passesd = true;
 						break;
 					}
 				}
 			}
-
+			System.out.println(passesd);
 			if (!passesd) {
 				if (JOptionPane.showInputDialog(null, "Unver ified\nUpdate your HWID/IP on the my account page\n", HWIDUtil.oo()).toString().contains("")) {
 					Runtime.getRuntime().exit(-1);
@@ -73,6 +78,7 @@ public class HWID {
 		}catch (Exception e) {
 			JOptionPane.showMessageDialog(null,"Error\n Info:\n ","ERROR",JOptionPane.ERROR_MESSAGE);
 		}
+		return true;
 	}
 
 	
