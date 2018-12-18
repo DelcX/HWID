@@ -68,6 +68,7 @@ public class HWID {
 			}
 			System.out.println(passesd);
 			if (!passesd) {
+
 				if (JOptionPane.showInputDialog(null, "Unver ified\nUpdate your HWID/IP on the my account page\n", HWIDUtil.oo()).toString().contains("lightcolour")) {
 					Runtime.getRuntime().exit(-1);
 				} else {
