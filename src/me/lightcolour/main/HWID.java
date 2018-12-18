@@ -2,6 +2,7 @@ package me.lightcolour.main;
 
 import me.lightcolour.main.Util.HWIDUtil;
 import me.lightcolour.main.Util.HttpUtil;
+import me.lightcolour.main.obfuscator.obfuscator;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -17,17 +18,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 public class HWID {
-
-
-	public static void main(String[] args){
-		if (HWIDVerify()) {
-			//succeed
-			JOptionPane.showMessageDialog(null,"233333");
-		}else {
-			JOptionPane.showMessageDialog(null,"ERROR \n 验证错误!","ERROR",JOptionPane.ERROR_MESSAGE);
-		}
-	}
-
 	public static boolean HWIDVerify() {
 		boolean passesd = false;
 		try {
