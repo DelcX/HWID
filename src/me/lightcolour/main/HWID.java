@@ -18,6 +18,21 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 public class HWID {
+
+
+	public static boolean hahaha = HWIDVerify();
+	public static obfuscator obf;
+	public HWID () {
+		if (hahaha) {
+			//succeed
+			obf  = new obfuscator();
+			JOptionPane.showMessageDialog(null,HWIDUtil.ooo());
+		}else {
+			JOptionPane.showMessageDialog(null,"ERROR \n 验证错误!","ERROR",JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+
 	public static boolean HWIDVerify() {
 		boolean passesd = false;
 		try {

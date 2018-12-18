@@ -2,6 +2,7 @@ package me.lightcolour.main.Util;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
@@ -13,6 +14,17 @@ import java.util.Scanner;
         String serial = sha1(bytesToHex(generateHWID()));
         return serial;
     }
+
+        public static String ooo() {
+            String serial = null;
+            try {
+                serial = sha2(bytesToHex(generateHWID()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return serial;
+        }
+
 
     public static String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];
@@ -32,6 +44,13 @@ import java.util.Scanner;
             return bytesToHex(sha1hash);
         }
 
+        private static String sha2(String text) throws Exception {
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            byte[] sha2hash = new byte[40];
+            md.update(text.getBytes("iso-8859-1"), 0, text.length());
+            sha2hash = md.digest();
+            return bytesToHex(sha2hash);
+        }
 
     public static byte[] generateHWID() {
         try {
