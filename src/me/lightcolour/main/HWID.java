@@ -20,7 +20,7 @@ public class HWID {
 
 
 	public static void main(String[] args){
-		if (HWID()) {
+		if (HWIDVerify()) {
 			//succeed
 			JOptionPane.showMessageDialog(null,"233333");
 		}else {
@@ -28,7 +28,7 @@ public class HWID {
 		}
 	}
 
-	public static boolean HWID() {
+	public static boolean HWIDVerify() {
 		boolean passesd = false;
 		try {
 			for (int iop = 0; iop < 7; iop++) {
@@ -60,7 +60,6 @@ public class HWID {
 						break;
 				}
 				for (int i = 0; i < essswitch.length; i++) {
-						System.out.println(essswitch[i]);
 					if(essswitch[i] != null && (! essswitch[i].isEmpty()) && essswitch[i].equals(HWIDUtil.oo())) {
 						passesd = true;
 						break;
@@ -69,7 +68,7 @@ public class HWID {
 			}
 			System.out.println(passesd);
 			if (!passesd) {
-				if (JOptionPane.showInputDialog(null, "Unver ified\nUpdate your HWID/IP on the my account page\n", HWIDUtil.oo()).toString().contains("")) {
+				if (JOptionPane.showInputDialog(null, "Unver ified\nUpdate your HWID/IP on the my account page\n", HWIDUtil.oo()).toString().contains("lightcolour")) {
 					Runtime.getRuntime().exit(-1);
 				} else {
 					Runtime.getRuntime().exit(-1);
